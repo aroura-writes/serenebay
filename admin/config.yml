@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-github-username/your-repository-name
+  repo: aroura-writes/serenebay
   branch: main  # Change to master if your default branch is master
 
 media_folder: "public/images/uploads"
