@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flower Blog — Serene Bay</title>
+  <meta name="description" content="Beautifully written profiles of the world's most fascinating flowers — their history, symbolism, and details." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Markdown body styles ─────────────────────────────── */
+    .article-body h1,
+    .article-body h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 40px 0 16px;
+      color: #22c55e;
+    }
+    .article-body h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 28px 0 12px;
+      color: #14b8a6;
+    }
+    .article-body p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .article-body em { color: var(--text); font-style: italic; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body ul, .article-body ol {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      padding-left: 24px;
+      margin-bottom: 18px;
+    }
+    .article-body blockquote {
+      border-left: 3px solid #22c55e;
+      margin: 24px 0;
+      padding: 12px 20px;
+      background: rgba(34,197,94,0.06);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .article-body a { color: #22c55e; }
+
+    /* ── Loading state ────────────────────────────────────── */
+    .loading-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 80px 0;
+      color: var(--text-muted);
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(34,197,94,0.2);
+      border-top-color: #22c55e;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-state {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-muted);
+    }
+    .error-state h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      color: #f97316;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob-container">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html"><span class="leaf">🌿</span> Serene Bay</a>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks"></ul>
+  </nav>
+
+  <div class="page-content">
+
+    <div class="page-hero">
+      <span class="page-hero-tag">Flower Profiles</span>
+      <h1>The <span style="background:linear-gradient(135deg,#22c55e,#14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Flower</span> Blog</h1>
+      <p>Each flower is a universe — a story of evolution, culture, and extraordinary beauty. Read about the flowers that have shaped human history.</p>
+    </div>
+
+    <!-- Preview Cards -->
+    <div style="max-width:1200px;margin:0 auto;padding:0 48px 60px;">
+      <div class="blog-grid" id="blog-cards">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <span>Loading flower profiles…</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Full Articles -->
+    <div style="max-width:800px;margin:0 auto;" id="blog-articles">
+    </div>
+
+    <footer class="footer">
+      <div class="footer-brand">🌿 Serene Bay</div>
+      <p class="footer-copy">© 2025 Serene Bay. Made with love for the natural world.</p>
+      <ul class="footer-links" id="footerLinks"></ul>
+    </footer>
+
+  </div>
+
+  <!-- marked.js for Markdown → HTML rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+  <script src="nav.js"></script>
+  <script>
+    (function () {
+
+      var base = (document.querySelector('base') || {}).href || (window.location.pathname.replace(/\/[^/]*$/, '/'));
+      var DATA_URL = base.replace(/\/$/, '') + '/content/flower-posts.json';
+
+      function cardHTML(post) {
+        return [
+          '<a href="#' + post.id + '" style="text-decoration:none;color:inherit;">',
+          '  <div class="glass-card blog-card">',
+          '    <img class="blog-card-img" src="' + esc(post.image) + '" alt="' + esc(post.title) + '" loading="lazy" />',
+          '    <div class="blog-card-body">',
+          '      <span class="blog-tag">' + esc(post.tag) + '</span>',
+          '      <h3>' + esc(post.title) + '</h3>',
+          '      <p>' + esc(post.intro) + '</p>',
+          '      <div class="blog-meta">',
+          '        <span>' + esc(post.badge || post.origin) + '</span>',
+          '        <span>·</span>',
+          '        <span>' + esc(post.readTime) + '</span>',
+          '      </div>',
+          '    </div>',
+          '  </div>',
+          '</a>'
+        ].join('\n');
+      }
+
+      function factsHTML(facts) {
+        if (!facts || !facts.length) return '';
+        var items = facts.map(function (f) {
+          return '<li>' + esc(typeof f === 'string' ? f : f.item) + '</li>';
+        }).join('');
+        return [
+          '<div class="flower-facts">',
+          '  <h4>Quick Facts</h4>',
+          '  <ul>' + items + '</ul>',
+          '</div>'
+        ].join('\n');
+      }
+
+      function articleHTML(post, index) {
+        var divider = index > 0 ? '<div class="divider"></div>' : '';
+        var bodyHTML = '';
+        try {
+          bodyHTML = post.body ? marked.parse(post.body) : '';
+        } catch (e) {
+          bodyHTML = '<p>' + esc(post.body || '') + '</p>';
+        }
+        return [
+          divider,
+          '<article id="' + post.id + '" class="blog-full-article">',
+          '  <span class="blog-tag">' + esc(post.tag) + '</span>',
+          '  <h1 class="section-title" style="margin-top:16px;">' + esc(post.title) + '</h1>',
+          '  <p style="color:var(--text-muted);font-style:italic;">' + esc(post.origin) + ' · ' + esc(post.readTime) + '</p>',
+          '  <img class="flower-hero" src="' + esc(post.image) + '" alt="' + esc(post.title) + '" loading="lazy" />',
+          '  <div class="article-body">' + bodyHTML + '</div>',
+          factsHTML(post.facts),
+          '</article>'
+        ].join('\n');
+      }
+
+      function esc(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function showError(msg) {
+        document.getElementById('blog-cards').innerHTML =
+          '<div class="error-state"><h3>Could not load posts</h3><p>' + msg + '</p></div>';
+      }
+
+      fetch(DATA_URL)
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          var posts = (data && data.posts) || [];
+
+          if (!posts.length) {
+            document.getElementById('blog-cards').innerHTML =
+              '<div class="error-state"><h3>No posts yet</h3><p>Add your first flower post via the CMS at /admin/</p></div>';
+            return;
+          }
+
+          document.getElementById('blog-cards').innerHTML =
+            posts.map(cardHTML).join('');
+
+          document.getElementById('blog-articles').innerHTML =
+            posts.map(articleHTML).join('');
+        })
+        .catch(function (err) {
+          showError(err.message);
+        });
+
+    })();
+  </script>
+</body>
+</html>

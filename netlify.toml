@@ -1,0 +1,21 @@
+# Serene Bay — Netlify configuration
+# ─────────────────────────────────────────────────────────────
+# DEPLOYMENT: Upload the CONTENTS of this folder (all .html files,
+# styles.css, nav.js, public/, netlify.toml) to your GitHub repo.
+# Connect to Netlify → enable Netlify Identity → enable Git Gateway.
+# Then visit yoursite.netlify.app/admin/ to manage content.
+# ─────────────────────────────────────────────────────────────
+
+# No build command needed — this is a pure static HTML site.
+# The 'public' folder assets are already at the correct paths.
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Access-Control-Allow-Origin = "*"

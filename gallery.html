@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Serene Bay</title>
+  <meta name="description" content="Browse stunning nature photography — forests, oceans, deserts, and waterfalls curated for nature lovers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gallery-item { cursor: default; }
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw; max-height: 88vh;
+      border-radius: 12px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+    }
+    .lightbox-close {
+      position: absolute; top: 24px; right: 28px;
+      font-size: 2rem; color: rgba(255,255,255,0.6);
+      cursor: pointer; background: none; border: none;
+      transition: color .2s;
+    }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-caption {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      text-align: center; color: rgba(255,255,255,0.7); font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob-container">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html"><span class="leaf">🌿</span> Serene Bay</a>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+    </ul>
+  </nav>
+
+  <div class="page-content">
+
+    <div class="page-hero">
+      <span class="page-hero-tag">Visual Journey</span>
+      <h1>Nature<br><span style="background:linear-gradient(135deg,#22c55e,#14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Gallery</span></h1>
+      <p>A curated collection of the world's most breathtaking natural landscapes. Filter by category and let the beauty of our planet wash over you.</p>
+    </div>
+
+    <div class="section-full" style="max-width:1200px;margin:0 auto;">
+      <!-- Category Filter -->
+      <div class="gallery-categories" id="filterBtns">
+        <button class="category-btn active" data-filter="all">All</button>
+        <button class="category-btn" data-filter="forests">🌲 Forests</button>
+        <button class="category-btn" data-filter="oceans">🌊 Oceans</button>
+        <button class="category-btn" data-filter="deserts">🏜️ Deserts</button>
+        <button class="category-btn" data-filter="waterfalls">💧 Waterfalls</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-masonry" id="galleryGrid">
+
+        <!-- Forests -->
+        <div class="gallery-item" data-cat="forests" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80" alt="Ancient Forest" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Forests</div><div class="gallery-item-title">Ancient Canopy</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="forests" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Forest Path" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Forests</div><div class="gallery-item-title">The Green Path</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="forests" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80" alt="Misty Forest" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Forests</div><div class="gallery-item-title">Morning Mist</div></div>
+          </div>
+        </div>
+
+        <!-- Oceans -->
+        <div class="gallery-item" data-cat="oceans" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Tropical Ocean" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Oceans</div><div class="gallery-item-title">Crystal Waters</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="oceans" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80" alt="Ocean Waves" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Oceans</div><div class="gallery-item-title">Wild Waves</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="oceans" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80" alt="Beach Sunset" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Oceans</div><div class="gallery-item-title">Golden Horizon</div></div>
+          </div>
+        </div>
+
+        <!-- Deserts -->
+        <div class="gallery-item" data-cat="deserts" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80" alt="Desert Dunes" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Deserts</div><div class="gallery-item-title">Sahara Dunes</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="deserts" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800&q=80" alt="Desert Rocky" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Deserts</div><div class="gallery-item-title">Red Rock Canyon</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="deserts" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" alt="Desert Night" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Deserts</div><div class="gallery-item-title">Desert Night Sky</div></div>
+          </div>
+        </div>
+
+        <!-- Waterfalls -->
+        <div class="gallery-item" data-cat="waterfalls" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1520962880247-cfaf541d8354?w=800&q=80" alt="Waterfall" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Waterfalls</div><div class="gallery-item-title">Cascade Falls</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="waterfalls" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800&q=80" alt="Waterfall Jungle" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Waterfalls</div><div class="gallery-item-title">Jungle Veil</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="waterfalls" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&q=80" alt="Niagara style" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Waterfalls</div><div class="gallery-item-title">Thundering Torrent</div></div>
+          </div>
+        </div>
+
+        <!-- More Forests -->
+        <div class="gallery-item" data-cat="forests" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=80" alt="Redwood Forest" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Forests</div><div class="gallery-item-title">Redwood Giants</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="forests" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=800&q=80" alt="Autumn Forest" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Forests</div><div class="gallery-item-title">Autumn Fire</div></div>
+          </div>
+        </div>
+
+        <!-- More Oceans -->
+        <div class="gallery-item" data-cat="oceans" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=80" alt="Underwater" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Oceans</div><div class="gallery-item-title">Beneath the Surface</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="deserts" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1539725121397-78c6e9fca7e5?w=800&q=80" alt="Desert plants" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Deserts</div><div class="gallery-item-title">Saguaro Sentinels</div></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-cat="waterfalls" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80" alt="Aerial nature" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div><div class="gallery-item-label">Waterfalls</div><div class="gallery-item-title">Aerial View</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-brand">🌿 Serene Bay</div>
+      <p class="footer-copy">© 2025 Serene Bay. Made with love for the natural world.</p>
+      <ul class="footer-links" id="footerLinks"></ul>
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(null,true)">✕</button>
+    <img id="lightboxImg" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    // Filter
+    document.getElementById('filterBtns').addEventListener('click', e => {
+      const btn = e.target.closest('.category-btn');
+      if (!btn) return;
+      document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+
+    // Lightbox
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      const title = el.querySelector('.gallery-item-title').textContent;
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightboxImg').alt = img.alt;
+      document.getElementById('lightboxCaption').textContent = title;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e, force) {
+      if (force || e.target === document.getElementById('lightbox')) {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(null, true); });
+  </script>
+  <script src="nav.js"></script>
+</body>
+</html>
