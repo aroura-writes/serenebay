@@ -1,6 +1,7 @@
 backend:
-  name: git-gateway
-  branch: main
+  name: github
+  repo: your-github-username/your-repository-name
+  branch: main  # Change to master if your default branch is master
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
