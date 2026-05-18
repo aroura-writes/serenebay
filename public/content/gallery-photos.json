@@ -5,6 +5,23 @@
       "cat": "deserts",
       "image": "https://unsplash.com/photos/rolling-sand-dunes-in-desert-landscape-pVr6wvUneMk",
       "alt": "Rolling sand dunes"
-    }
+    },
+     {"title": "Ancient Canopy",     "cat": "forests",    "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80", "alt": "Ancient Forest"},
+    {"title": "The Green Path",     "cat": "forests",    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80", "alt": "Forest Path"},
+    {"title": "Morning Mist",       "cat": "forests",    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80", "alt": "Misty Forest"},
+    {"title": "Crystal Waters",     "cat": "oceans",     "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", "alt": "Tropical Ocean"},
+    {"title": "Wild Waves",         "cat": "oceans",     "image": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80", "alt": "Ocean Waves"},
+    {"title": "Golden Horizon",     "cat": "oceans",     "image": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80", "alt": "Beach Sunset"},
+    {"title": "Sahara Dunes",       "cat": "deserts",    "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80", "alt": "Desert Dunes"},
+    {"title": "Red Rock Canyon",    "cat": "deserts",    "image": "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800&q=80", "alt": "Desert Rocky"},
+    {"title": "Desert Night Sky",   "cat": "deserts",    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80", "alt": "Desert Night"},
+    {"title": "Cascade Falls",      "cat": "waterfalls", "image": "https://images.unsplash.com/photo-1520962880247-cfaf541d8354?w=800&q=80", "alt": "Waterfall"},
+    {"title": "Jungle Veil",        "cat": "waterfalls", "image": "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800&q=80", "alt": "Waterfall Jungle"},
+    {"title": "Thundering Torrent", "cat": "waterfalls", "image": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&q=80", "alt": "Big Waterfall"},
+    {"title": "Redwood Giants",     "cat": "forests",    "image": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=80", "alt": "Redwood Forest"},
+    {"title": "Autumn Fire",        "cat": "forests",    "image": "https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=800&q=80", "alt": "Autumn Forest"},
+    {"title": "Beneath the Surface","cat": "oceans",     "image": "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=80", "alt": "Underwater"},
+    {"title": "Saguaro Sentinels",  "cat": "deserts",    "image": "https://images.unsplash.com/photo-1539725121397-78c6e9fca7e5?w=800&q=80", "alt": "Desert Plants"},
+    {"title": "Aerial View",        "cat": "waterfalls", "image": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80", "alt": "Aerial Nature"}
   ]
 }
