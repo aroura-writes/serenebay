@@ -1,0 +1,89 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# ─── COLLECTIONS ────────────────────────────────────────────────
+collections:
+
+  # ── Flower Blog ─────────────────────────────────────────────
+  - name: "flower_blog"
+    label: "🌸 Flower Blog"
+    files:
+      - name: "posts"
+        label: "All Flower Posts"
+        file: "public/content/flower-posts.json"
+        format: json
+        fields:
+          - name: "posts"
+            label: "Posts"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "Post ID (slug, no spaces)"
+                name: "id"
+                widget: "string"
+                hint: "e.g. lavender — used for the in-page anchor link"
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Tag / Plant Family"
+                name: "tag"
+                widget: "string"
+                hint: "e.g. 🌹 Rosaceae Family"
+              - label: "Origin"
+                name: "origin"
+                widget: "string"
+                hint: "e.g. Persia & China"
+              - label: "Read Time"
+                name: "readTime"
+                widget: "string"
+                hint: "e.g. 8 min read"
+              - label: "Card Summary"
+                name: "intro"
+                widget: "text"
+                hint: "Short description shown on the preview card (1-2 sentences)"
+              - label: "Card Badge Text"
+                name: "badge"
+                widget: "string"
+                hint: "e.g. 5,000 years of history"
+              - label: "Hero Image URL"
+                name: "image"
+                widget: "string"
+                hint: "Paste an Unsplash URL: https://images.unsplash.com/photo-xxx?w=900&q=80"
+              - label: "Full Article (WYSIWYG)"
+                name: "body"
+                widget: "markdown"
+                hint: "Write the full article here. Use ## for section headings."
+              - label: "Quick Facts"
+                name: "facts"
+                widget: "list"
+                hint: "Each entry is one bullet fact shown in the Facts panel"
+                field:
+                  label: "Fact"
+                  name: "item"
+                  widget: "string"
+
+  # ── Gallery ─────────────────────────────────────────────────
+  - name: "gallery"
+    label: "📷 Gallery"
+    files:
+      - name: "photos"
+        label: "All Gallery Photos"
+        file: "public/content/gallery-photos.json"
+        format: json
+        fields:
+          - name: "photos"
+            label: "Photos"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Title",    name: "title",    widget: "string"}
+              - label: "Category"
+                name: "cat"
+                widget: "select"
+                options: ["forests", "oceans", "deserts", "waterfalls"]
+              - {label: "Image URL", name: "image", widget: "string", hint: "Unsplash URL"}
+              - {label: "Alt Text",  name: "alt",   widget: "string"}
