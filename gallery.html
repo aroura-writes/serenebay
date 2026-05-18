@@ -241,5 +241,53 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(null, true); });
   </script>
   <script src="nav.js"></script>
+  <script>
+    (function () {
+      // 1. This is the exact same path fix you did for the flower blog!
+      var base = (document.querySelector('base') || {}).href || (window.location.pathname.replace(/\/[^/]*$/, '/'));
+      var DATA_URL = base.replace(/\/$/, '') + '/public/content/gallery-photos.json';
+
+      // 2. This helper creates the HTML for your new photos
+      function createPhotoElement(photo) {
+        var itemDiv = document.createElement('div');
+        itemDiv.className = 'gallery-item';
+        itemDiv.setAttribute('data-cat', photo.cat);
+        itemDiv.onclick = function() { openLightbox(this); };
+
+        itemDiv.innerHTML = [
+          '<img src="' + photo.image + '" alt="' + (photo.alt || photo.title) + '" loading="lazy" />',
+          '<div class="gallery-item-overlay">',
+          '  <div>',
+          '    <div class="gallery-item-label">' + photo.cat.toUpperCase() + '</div>',
+          '    <div class="gallery-item-title">' + photo.title + '</div>',
+          '  </div>',
+          '</div>'
+        ].join('\n');
+
+        return itemDiv;
+      }
+
+      // 3. Fetch the file from the DATA_URL path
+      fetch(DATA_URL)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var cmsPhotos = (data && data.photos) || [];
+          var grid = document.getElementById('galleryGrid');
+          
+          // Get photos already hardcoded on screen to prevent duplicates
+          var existingSrcs = Array.from(grid.querySelectorAll('img')).map(function(img) {
+            return img.getAttribute('src');
+          });
+
+          // Append any newly added CMS items to the bottom of the grid
+          cmsPhotos.forEach(function (photo) {
+            if (existingSrcs.indexOf(photo.image) === -1) {
+              grid.appendChild(createPhotoElement(photo));
+            }
+          });
+        })
+        .catch(function (err) { console.warn("CMS Sync error:", err); });
+    })();
+  </script>
 </body>
 </html>
