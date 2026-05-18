@@ -140,7 +140,7 @@
     (function () {
 
       var base = (document.querySelector('base') || {}).href || (window.location.pathname.replace(/\/[^/]*$/, '/'));
-      var DATA_URL = base.replace(/\/$/, '') + '/content/flower-posts.json';
+      var DATA_URL = base.replace(/\/$/, '') + '/public/content/flower-posts.json';
 
       function cardHTML(post) {
         return [
