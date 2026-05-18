@@ -2,12 +2,20 @@
   "posts": [
     {
       "id": "lavendar",
-      "title": "roses",
-      "body": "ghggugfdyguhdvhcjhvgsdygfu",
+      "title": "Lavendar",
+      "tag": "Lamiaceae",
+      "origin": "Mediterranean region, the Middle East & India",
+      "readTime": "5 min read",
+      "intro": "Lavender is an aromatic flowering plant in the mint family, highly prized for its soothing fragrance, vibrant purple blooms, and essential oils. It is widely used in aromatherapy, skincare, herbal teas, and gardening to promote relaxation, ease anxiety, and naturally repel insects.",
+      "badge": "Additional Information",
+      "image": "https://www.gardendesign.com/pictures/images/263x300Exact_68x0/site_3/english-lavender-lavandula-angustifolia-garden-design_11716.jpg",
+      "body": "# **Introduction  on the agronomy and phytochemistry of lavender.**\n\n***\n\n## **Title:** The Effect of Deficit Irrigation on Essential Oil Yield and Phytochemical Composition of _Lavandula angustifolia_\n\n### **Chapter 1: Introduction**\n\n## \n\n_Lavandula angustifolia_ (English lavender) is a highly valued perennial shrub in the Lamiaceae family. It is cultivated globally for its aromatic essential oils, which are heavily utilized in the pharmaceutical, cosmetic, and food industries. The therapeutic efficacy of lavender oil—specifically its anxiolytic and antimicrobial properties—is driven by its primary chemical constituents, **linalool** and **linalyl acetate**.\n\nAs climate change accelerates freshwater scarcity in major agricultural regions, optimizing water-use efficiency has become critical. Lavender is traditionally considered drought-tolerant. However, the precise metabolic responses of the plant to controlled water stress remain heavily debated.\n\n## **1.2 Statement of the Problem**\n\nWhile excessive irrigation triggers root rot and diminishes oil quality, severe water deprivation can stunt plant biomass and slash overall oil yields. Existing literature offers conflicting data on how managed water deficits impact the secondary metabolic pathways responsible for synthesizing linalool. Farmers lack a standardized irrigation framework that balances water conservation with high-purity chemical yields.\n\n## **1.3 Research Objectives**\n\nThe primary objectives of this thesis are:\n\n- To evaluate the impact of three distinct irrigation levels (100%, 75%, and 50% field capacity) on the total biomass of _Lavandula angustifolia_.\n- To quantify changes in essential oil yield extracted via hydrodistillation.\n- To profile and compare the chemical compositions of the extracted oils using Gas Chromatography-Mass Spectrometry (GC-MS).\n\n## **1.4 Significance of the Study**\n\nThis research bridges the gap between sustainable agronomy and industrial phytochemistry. By identifying the exact water threshold that triggers optimal secondary metabolite production, this study provides actionable data for farmers to maximize profits in arid regions while conserving vital water resources.\n\n***",
       "facts": [
-        "did "
-      ],
-      "intro": "higfgdfgg"
+        "* Scientific Name: Lavandula (belongs to the mint/Lamiaceae family). * Native Region: Mediterranean, Mediterranean islands, Middle East, and India.",
+        "* Lifespan: Perennial shrub living 10 to 15 years with proper pruning. * Symbolism: Historically represents purity, silence, devotion, and caution.",
+        "* Soil Needs: Thrives in poor, rocky, well-drained, alkaline soil. * Sunlight: Requires full sun (at least 6 hours daily). * Water Needs: Highly drought-tolerant once established; hates overwatering.",
+        "* Top Producer: Bulgaria is the world's largest producer, followed by France. * Key Compounds: Linalool and linalyl acetate drive its scent and benefits. * Primary Uses: Aromatherapy, cosmetics, sleep aids, and culinary flavoring."
+      ]
     }
   ]
 }
